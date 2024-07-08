@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
+require('dotenv').config()
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 
-
+const url = process.env.DB_URL
 app.use(bodyParser.json());
 //connect DB
-mongoose.connect("mongodb://localhost:27017/testdb");
+mongoose.connect(url);
 
 // page d'accuel
 app.get('/', (req, res) => {
